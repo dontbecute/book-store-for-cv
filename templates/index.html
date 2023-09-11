@@ -1,0 +1,26 @@
+
+{%extends "_base.html" %}
+{% load static %}
+
+{%block content%}
+
+  <!-- Hero -->
+   <div class="hero">
+    <div class="overlay">
+      <div class="container">
+        <div class="content">
+          <p>
+            Meet your favorite book, find your reading community, and manage
+            your reading life.
+          </p>
+          <a href="{% url 'book_list'%}" class="btn btn-hero">
+            Browse Books
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="book-section-container">
+
+    </div>
+{% endblock content%}  

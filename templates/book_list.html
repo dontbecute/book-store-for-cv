@@ -1,0 +1,21 @@
+{% extends "_base.html" %}
+
+{% block content %}
+      <div class="book-section-container">
+        <!-- Must Read Books -->
+        <div class="book-section">
+          <h2>All Books</h2>
+          {% for book in books %}
+          <div class="card-wraper">
+
+            <div class="card">
+              <img src="{{ book.image.url }}" alt="Book"  />
+              <h3>{{book.title}}</h3>
+              <p>{{book.auth}}</p>
+              <a class="btn btn-primary" href="{{ book.get_absolute_url }}">Read More</a>
+            </div>
+            {%endfor %}
+          </div>
+        </div>
+      </div>
+{% endblock content%}

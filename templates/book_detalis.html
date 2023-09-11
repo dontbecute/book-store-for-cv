@@ -1,0 +1,50 @@
+{% extends "_base.html" %}
+{% block content%}
+    <div class="container">
+        <div class="left">
+          <div class="photo">
+            <img src="{{book.image.url}}" alt="Book" />
+
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="authors">
+            <h2 class="title">title of this book : {{book.title}}</h2>
+            <h4 class="author">auth of this book :{{book.auth}}</h4>
+         </div>
+  
+
+          <p class="description">
+            some bla for this book : {{book.discreption}}
+          </p>
+
+         <div class="comments">
+          reviews: 
+          {%for review in book.review.all%}
+          <p></p>
+            {{review.auth}}:
+            <p class="comment">{{review.review}} </p>
+            {%endfor%}
+        </div>
+
+        <form action="{% url 'book_detalis' book.id%}" method="post">
+          {%csrf_token%}
+          {{form.review}}
+          {{form.rating}}
+          <button type="submit" id="button">post</button>
+        </form>
+      </div>
+      {{book.id}}
+    </section>
+
+    <style>
+      .comments{
+        border: 1px solid red;
+        padding: 10px;
+      }
+      .comment{
+        background-color: grey;
+      }
+    </style>
+{%endblock content%}

@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="{%static 'css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}" />
+
+    <link rel="stylesheet" href="{%static 'css/style.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/2e0586df66.js"></script>
+    <title>Prudential Book Store</title>
+  </head>
+  <style>
+
+
+.nav-item{
+  display: inline;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.nav-link{
+  color: white;
+  font-weight: 500;
+  padding: 10px;
+
+}
+
+.nav-item:hover{
+  display: inline;
+  padding: 10px;
+  background-color: white;
+  margin: 5px;
+  border: 1px solid red;
+  border-radius: 5px;
+}
+
+.nav-link:hover{
+  color: red;
+  font-weight: 500;
+}
+
+.input-search {
+  padding: 5px;
+  width: 300px;
+  border: 0px;
+  border-radius: 5px;
+  background-color: wheat;
+  color: red;
+  
+}
+
+  </style>
+
+  <body>
+    <!-- Top Nav -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <h2><a href="{%url 'index'%}">Prudential Book Store</a></h2>
+          <p>Your one stop book shop</p>
+        </div>
+        <form action="{%url 'search'%}" method="get">
+          <input name="q" class="input-search" type="search" placeholder="Search Books" />
+          <button type="submit"> search</button>
+        </form>
+        <div>
+        {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'create' %}">Post Book</a>
+      </li>
+        {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+      </li>
+        {% endif %}
+        </div>
+      </div>
+    </header>
+
+    <main>
+        {%block content%}
+        {% endblock content %}
+    </main>
+
+      <!-- Footer -->
+      <footer>
+        <div class="container">
+          <div class="copyright">
+            Copyright 2019 Prudential Book Store
+          </div>
+          <div class="acknowledgement">
+            API Provided by
+            <a target="_blank" href="https://www.goodreads.com/">Goodreads</a>
+          </div>
+        </div>
+      </footer>
+    </body>
+  </html>
